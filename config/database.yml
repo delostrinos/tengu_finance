@@ -84,3 +84,4 @@ production:
   database: tengu_finance_production
   username: tengu_finance
   password: <%= ENV["TENGU_FINANCE_DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>
