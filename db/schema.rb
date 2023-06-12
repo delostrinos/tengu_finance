@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_10_174743) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_12_184745) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -33,7 +33,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_10_174743) do
     t.decimal "total_expense"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
     t.index ["household_id"], name: "index_budgets_on_household_id"
+    t.index ["user_id"], name: "index_budgets_on_user_id"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -107,6 +109,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_10_174743) do
 
   add_foreign_key "budget_goals", "budgets"
   add_foreign_key "budgets", "households"
+  add_foreign_key "budgets", "users"
   add_foreign_key "expenses", "budgets"
   add_foreign_key "expenses", "categories"
   add_foreign_key "income_sources", "budgets"
